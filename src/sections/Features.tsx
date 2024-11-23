@@ -9,7 +9,7 @@ const features = ['Asset Library', 'Code Preview', 'Flow Mode', 'Smart Sync', 'A
 
 export const Features = () => {
   return (
-    <section className="py-24">
+    <section id="features" className="py-24">
       <div className="container">
         <div className="flex justify-center">
           <Tag>Features</Tag>

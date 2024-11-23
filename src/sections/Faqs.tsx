@@ -36,7 +36,7 @@ export const Faqs = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   return (
-    <section className="py-24">
+    <section id="faqs" className="py-24">
       <div className="container">
         <div className="flex justify-center">
           <Tag>Integrations</Tag>
@@ -50,7 +50,7 @@ export const Faqs = () => {
               <div className="flex justify-between items-center cursor-pointer" onClick={() => setSelectedIndex(index)}>
                 <h3 className="font-medium">{faq.question}</h3>
                 <IconPlus
-                  className={cn('flex-shrink-0 text-lime-400 transition duration-300', { 'text-red-400 rotate-45': selectedIndex === index })}
+                  className={cn('flex-shrink-0 text-lime-400 transition duration-300', { 'text-lime-100 rotate-45': selectedIndex === index })}
                   size={20}
                 />
               </div>

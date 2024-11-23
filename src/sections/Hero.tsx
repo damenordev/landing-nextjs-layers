@@ -37,6 +37,7 @@ export const Hero = () => {
 
   return (
     <section
+      id="hero"
       className="py-24 overflow-x-clip pt-40 md:pt-24"
       style={{
         cursor: `url(${cursorYoutubeImage.src}), auto`,

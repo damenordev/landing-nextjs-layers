@@ -10,7 +10,7 @@ import { Button } from '@/components'
 import { cn } from '@/styles'
 
 const navLinks = [
-  { label: 'Home', href: '#' },
+  { label: 'Home', href: '#hero' },
   { label: 'Features', href: '#features' },
   { label: 'Integrations', href: '#integrations' },
   { label: 'FAQs', href: '#faqs' },
@@ -37,7 +37,7 @@ export const Navbar = () => {
                   <Link
                     key={index}
                     href={link.href}
-                    className={cn('text-white/35 hover:underline', {
+                    className={cn('text-white/35 hover:underline text-white', {
                       'text-white': link.href === '#',
                     })}
                   >
@@ -61,7 +61,7 @@ export const Navbar = () => {
               <motion.div className="overflow-hidden" initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }}>
                 <div className="flex flex-col items-center gap-4 py-4">
                   {navLinks.map(link => (
-                    <a key={link.label} href={link.href} className="">
+                    <a key={link.label} href={link.href}>
                       {link.label}
                     </a>
                   ))}
