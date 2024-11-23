@@ -1,3 +1,7 @@
+'use client'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+
 import { IconPlus } from '@/assets'
 import { Tag } from '@/components'
 import { cn } from '@/styles'
@@ -29,7 +33,7 @@ const faqs = [
 ]
 
 export const Faqs = () => {
-  const selectedIndex = 0
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   return (
     <section className="py-24">
@@ -38,18 +42,30 @@ export const Faqs = () => {
           <Tag>Integrations</Tag>
         </div>
         <h2 className="text-6xl font-medium mt-6 text-center">
-          Questions? We´ve got <span className="text-lime-400">answers</span>
+          Questions? We&apos;ve got <span className="text-lime-400">answers</span>
         </h2>
-        <div className="mt-12 flex flex-col gap-6 max-w-xl mx-auto">
+        <div className="mt-12 flex flex-col gap-4 max-w-xl mx-auto">
           {faqs.map((faq, index) => (
             <div key={faq.question} className="bg-neutral-900 rounded-2xl border border-white/10 p-6">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center cursor-pointer" onClick={() => setSelectedIndex(index)}>
                 <h3 className="font-medium">{faq.question}</h3>
-                <IconPlus className={cn('flex-shrink-0 text-lime-400 transition-all', { 'text-red-400 rotate-45': selectedIndex === index })} size={20} />
+                <IconPlus
+                  className={cn('flex-shrink-0 text-lime-400 transition duration-300', { 'text-red-400 rotate-45': selectedIndex === index })}
+                  size={20}
+                />
               </div>
-              <div className={cn('mt-6', { hidden: selectedIndex !== index })}>
-                <p className="text-white/50">{faq.answer}</p>
-              </div>
+              <AnimatePresence>
+                {selectedIndex === index && (
+                  <motion.div
+                    className="mt-3 overflow-hidden"
+                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                    animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
+                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  >
+                    <p className="text-white/50">{faq.answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
