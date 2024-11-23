@@ -1,4 +1,7 @@
+'use client'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { Fragment } from 'react'
 
 import figmaIcon from '@/assets/images/figma-logo.svg'
 import notionIcon from '@/assets/images/notion-logo.svg'
@@ -23,19 +26,28 @@ export interface IIntegrationsColumnProps {
 }
 
 export const IntegrationsColumn: React.FC<IIntegrationsColumnProps> = ({ className, isReverse }) => {
-  const integrationsToShow = isReverse ? [...integrations.slice().reverse()] : [...integrations]
+  const integrationsToShow = isReverse ? integrations.slice().reverse() : [...integrations]
 
   return (
-    <div className={cn('flex flex-col gap-4 pb-4', className)}>
-      {integrationsToShow.reverse().map(integration => (
-        <div key={integration.name} className="bg-neutral-900 border border-white/10 rounded-3xl p-6">
-          <div className="flex justify-center">
-            <Image className="size-24" src={integration.icon} alt={`${integration.name} icon`} />
-          </div>
-          <h3 className="text-3xl text-center mt-6">{integration.name}</h3>
-          <p className="text-center text-white/50 mt-2">{integration.description}</p>
-        </div>
+    <motion.div
+      animate={{ y: isReverse ? 0 : '-50%' }}
+      initial={{ y: isReverse ? '-50%' : 0 }}
+      transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
+      className={cn('flex flex-col gap-4 pb-4', className)}
+    >
+      {Array.from({ length: 2 }).map((_, i) => (
+        <Fragment key={i}>
+          {integrationsToShow.map(integration => (
+            <div key={integration.name} className="bg-neutral-900 border border-white/10 rounded-3xl p-6">
+              <div className="flex justify-center">
+                <Image className="size-24" src={integration.icon} alt={`${integration.name} icon`} />
+              </div>
+              <h3 className="text-3xl text-center mt-6">{integration.name}</h3>
+              <p className="text-center text-white/50 mt-2">{integration.description}</p>
+            </div>
+          ))}
+        </Fragment>
       ))}
-    </div>
+    </motion.div>
   )
 }
