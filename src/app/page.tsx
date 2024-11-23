@@ -1,4 +1,4 @@
-import { Features, Hero, Integrations, Introduction, LogoTicker, Navbar } from '@/sections'
+import { CallToAction, Faqs, Features, Footer, Hero, Integrations, Introduction, LogoTicker, Navbar } from '@/sections'
 
 export default function Home() {
   return (
@@ -9,6 +9,9 @@ export default function Home() {
       <Introduction />
       <Features />
       <Integrations />
+      <Faqs />
+      <CallToAction />
+      <Footer />
     </>
   )
 }

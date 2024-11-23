@@ -1,3 +1,7 @@
+import { IconPlus } from '@/assets'
+import { Tag } from '@/components'
+import { cn } from '@/styles'
+
 const faqs = [
   {
     question: 'How is Layers different from other design tools?',
@@ -24,6 +28,32 @@ const faqs = [
   },
 ]
 
-export default function Faqs() {
-  return <div>Faqs</div>
+export const Faqs = () => {
+  const selectedIndex = 0
+
+  return (
+    <section className="py-24">
+      <div className="container">
+        <div className="flex justify-center">
+          <Tag>Integrations</Tag>
+        </div>
+        <h2 className="text-6xl font-medium mt-6 text-center">
+          Questions? We´ve got <span className="text-lime-400">answers</span>
+        </h2>
+        <div className="mt-12 flex flex-col gap-6 max-w-xl mx-auto">
+          {faqs.map((faq, index) => (
+            <div key={faq.question} className="bg-neutral-900 rounded-2xl border border-white/10 p-6">
+              <div className="flex justify-between items-center">
+                <h3 className="font-medium">{faq.question}</h3>
+                <IconPlus className={cn('flex-shrink-0 text-lime-400 transition-all', { 'text-red-400 rotate-45': selectedIndex === index })} size={20} />
+              </div>
+              <div className={cn('mt-6', { hidden: selectedIndex !== index })}>
+                <p className="text-white/50">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
