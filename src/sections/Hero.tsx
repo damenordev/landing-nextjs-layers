@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export const Hero = () => {
   return (
-    <section className="py-24 overflow-x-clip">
+    <section className="py-24 overflow-x-clip pt-40 md:pt-24">
       <div className="container relative">
         <div className="hidden lg:block absolute -left-32 top-16">
           <Image src={designExample1Image} alt="Design example 1 image" />

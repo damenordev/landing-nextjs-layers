@@ -1,4 +1,5 @@
 export * from './IconMenu'
+export * from './IconMenuAnimated'
 export * from './IconMousePointer'
 export * from './IconPlus'
 export * from './IconWrapper'
