@@ -50,10 +50,14 @@ export const Navbar = () => {
               <button className="p-2 rounded-full transition-all hover:bg-neutral-800 active:scale-95 md:hidden">
                 <IconMenuAnimated isOpen={isOpen} onClick={toggleMenu} />
               </button>
-              <Button className="hidden md:block" variant="secondary">
-                Log In
-              </Button>
-              <Button className="hidden md:block">Sign Up</Button>
+              <a href="https://cv.damenor.dev/" target="_blank">
+                <Button className="hidden md:block" variant="secondary">
+                  Log In
+                </Button>
+              </a>
+              <a href="https://cv.damenor.dev/" target="_blank">
+                <Button className="hidden md:block">Sign Up</Button>
+              </a>
             </div>
           </div>
           <AnimatePresence>
@@ -65,8 +69,12 @@ export const Navbar = () => {
                       {link.label}
                     </a>
                   ))}
-                  <Button variant="secondary">Log In</Button>
-                  <Button>Sign Up</Button>
+                  <a href="https://cv.damenor.dev/" target="_blank">
+                    <Button variant="secondary">Log In</Button>
+                  </a>
+                  <a href="https://cv.damenor.dev/" target="_blank">
+                    <Button>Sign Up</Button>
+                  </a>
                 </div>
               </motion.div>
             )}

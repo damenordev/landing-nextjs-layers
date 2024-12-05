@@ -3,7 +3,7 @@ import Image from 'next/image'
 import logoImage from '@/assets/images/logo.svg'
 
 const footerLinks = [
-  { href: '#', label: 'Contact' },
+  { href: 'https://cv.damenor.dev', label: 'Contact', target: '_blank' },
   { href: '#', label: 'Privacy Policy' },
   { href: '#', label: 'Terms & Conditions' },
 ]
@@ -19,7 +19,7 @@ export const Footer = () => {
           <div>
             <nav className="flex gap-6">
               {footerLinks.map(link => (
-                <a key={link.label} href={link.href} className="text-white/50 text-sm">
+                <a key={link.label} href={link.href} target={link.target} className="text-white/50 text-sm">
                   {link.label}
                 </a>
               ))}
